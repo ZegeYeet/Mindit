@@ -1,0 +1,60 @@
+﻿@model Mindit.Models.ForumPost
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>ForumPost</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.className)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.className)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.authorName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.authorName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.postDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.postDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.postTitle)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.postTitle)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.postBody)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.postBody)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.postLikes)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.postLikes)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.postDislikes)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.postDislikes)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.PostId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
