@@ -11194,11 +11194,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Travis Johnson\\Desktop\\code related\\asp.net\\Reddite-like\\Tank Forums\\Mindit.csproj",
+      "projectUniqueName": "C:\\Users\\Travis Johnson\\Desktop\\code related\\asp.net\\Reddite-like\\Mindit\\Mindit.csproj",
       "projectName": "Mindit",
-      "projectPath": "C:\\Users\\Travis Johnson\\Desktop\\code related\\asp.net\\Reddite-like\\Tank Forums\\Mindit.csproj",
+      "projectPath": "C:\\Users\\Travis Johnson\\Desktop\\code related\\asp.net\\Reddite-like\\Mindit\\Mindit.csproj",
       "packagesPath": "C:\\Users\\Travis Johnson\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Travis Johnson\\Desktop\\code related\\asp.net\\Reddite-like\\Tank Forums\\obj\\",
+      "outputPath": "C:\\Users\\Travis Johnson\\Desktop\\code related\\asp.net\\Reddite-like\\Mindit\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

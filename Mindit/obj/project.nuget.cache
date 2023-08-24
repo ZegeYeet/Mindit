@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Z+NVfHYdsWWqUGs4HjELAy/Vp5Ea76hl/NxqP0BmCJiCD1W317OEC4zG1UDQuuiU/XzLI5H7D99IVkzxHzy9vA==",
+  "dgSpecHash": "WYvbF3crpb+wd8jKsq7954cSjy9Sb8KanfcTAD3FAHUx6lJD3wWqnH1JFQo2jTx3epUC66BYzVeFBa+SyAywIw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Travis Johnson\\Desktop\\code related\\asp.net\\Reddite-like\\Tank Forums\\Mindit.csproj",
+  "projectFilePath": "C:\\Users\\Travis Johnson\\Desktop\\code related\\asp.net\\Reddite-like\\Mindit\\Mindit.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Travis Johnson\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\Travis Johnson\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

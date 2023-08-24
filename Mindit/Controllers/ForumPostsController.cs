@@ -36,6 +36,22 @@ namespace Mindit.Controllers
                         Problem("Entity set 'ApplicationDbContext.WowClass'  is null.");
         }
 
+        // GET: ForumPost/search
+        public async Task<IActionResult> ShowSearchForm()
+        {
+            return _context.ForumPost != null ?
+                        View() :
+                        Problem("Entity set 'ApplicationDbContext.WowClass'  is null.");
+        }
+
+        // PoST: ForumPost/showSearchResults
+        public async Task<IActionResult> ShowSearchResults(string SearchPhrase)
+        {
+            return _context.ForumPost != null ?
+                        View("Index", await _context.ForumPost.Where(j => j.postBody.Contains(SearchPhrase)).ToListAsync()) :
+                        Problem("Entity set 'ApplicationDbContext.WowClass'  is null.");
+        }
+
         // GET: ForumPosts/Details/5
         public async Task<IActionResult> Details(int? id)
         {
