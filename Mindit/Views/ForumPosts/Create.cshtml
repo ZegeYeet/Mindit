@@ -14,16 +14,14 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <span asp-for="className" class="control-label">Which Class</span>
-                <select id="DropDownList1" asp-for="className" class="form-control">
+                <select id="DropDownList1" asp-for="mindyName" class="form-control">
                     <option value="">Please Select</option>
-                    <option value="Death Knight">Death Knight</option>
-                    <option value="Demon Hunter">Demon Hunter</option>
-                    <option value="Druid">Druid</option>
-                    <option value="Monk">Monk</option>
-                    <option value="Paladin">Paladin</option>
-                    <option value="Warrior">Warrior</option>
+                    <option value="Warcraft">Warcraft</option>
+                    <option value="OSRS">OSRS</option>
+                    <option value="Baldur's Gate'">Baldur's Gate</option>
+                    <option value="Indie RPGs">Indie RPGs</option>
                 </select>
-                <span asp-validation-for="className" class="text-danger"></span>
+                <span asp-validation-for="mindyName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <span asp-for="postTitle" class="control-label">Title</span>

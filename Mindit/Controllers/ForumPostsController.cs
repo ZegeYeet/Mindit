@@ -73,7 +73,7 @@ namespace Mindit.Controllers
         public async Task<IActionResult> NavClassSelection(string navClass)
         {
             var forumPosts = from post in _context.ForumPost select post;
-            forumPosts = forumPosts.Where(j => j.className.Contains(navClass));
+            forumPosts = forumPosts.Where(j => j.mindyName.Contains(navClass));
             forumPosts = forumPosts.OrderByDescending(i => i.postDate);
 
             return _context.ForumPost != null ?
@@ -94,7 +94,7 @@ namespace Mindit.Controllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("className,postTitle,postBody")] ForumPost forumPost)
+        public async Task<IActionResult> Create([Bind("mindyName,postTitle,postBody")] ForumPost forumPost)
         {
             forumPost.authorName = User.Identity.Name;
 

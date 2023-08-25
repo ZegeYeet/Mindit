@@ -10,7 +10,7 @@ namespace Mindit.Models
 
         [Key]
         public int PostId { get; set; }
-        public string? className { get; set; }
+        public string? mindyName { get; set; }
         public string? authorName { get; set; }
 
 
