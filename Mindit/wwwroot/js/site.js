@@ -99,9 +99,8 @@ function SetIconsAfterVote(postId, voteValue) {
 }
 
 function FilterCategory(mindyName) {
-    console.log("filtered category of: " + mindyName);
 
-    var categoryUrl = 'ForumPosts/NavMindySelection/' + mindyName;
-    location.href = categoryUrl;
+    window.location.href = "/ForumPosts/NavMindySelection?navClass=" + mindyName;
+
 }
 
