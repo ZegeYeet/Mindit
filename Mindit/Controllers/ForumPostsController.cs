@@ -70,11 +70,11 @@ namespace Mindit.Controllers
             return View(forumPost);
         }
 
-        public async Task<IActionResult> NavClassSelection(string navClass)
+        public async Task<IActionResult> NavMindySelection(string navClass)
         {
             var forumPosts = from post in _context.ForumPost select post;
-            forumPosts = forumPosts.Where(j => j.mindyName.Contains(navClass));
-            forumPosts = forumPosts.OrderByDescending(i => i.postDate);
+            forumPosts = forumPosts.Where(j => j.mindyName.Contains(navClass))
+                .Include(m => m.postVotes).OrderByDescending(i => i.postDate);
 
             return _context.ForumPost != null ?
                         View("Index", await forumPosts.ToListAsync()) :

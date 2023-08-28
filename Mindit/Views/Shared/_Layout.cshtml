@@ -22,7 +22,17 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="ForumPosts" asp-action="ShowSearchForm">Search</a>
                         </li>
+                        <li>
+                            <select id="DropDownList1" class="form-control" onchange="FilterCategory(this.value)">
+                                <option value="">View Category</option>
+                                <option value="Warcraft">Warcraft</option>
+                                <option value="OSRS">OSRS</option>
+                                <option value="Baldur's Gate'">Baldur's Gate</option>
+                                <option value="Indie RPGs">Indie RPGs</option>
+                            </select>
+                        </li>
                     </ul>
+                    
                     <partial name="_LoginPartial" />
                 </div>
             </div>

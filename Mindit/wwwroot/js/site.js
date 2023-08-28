@@ -96,6 +96,12 @@ function SetIconsAfterVote(postId, voteValue) {
         downvoteButton.style.backgroundImage = "url('Images/downvoteIconEmpty.png')";
         downvoteButton.value = "downvoteEmpty";
     }
+}
 
+function FilterCategory(mindyName) {
+    console.log("filtered category of: " + mindyName);
+
+    var categoryUrl = 'ForumPosts/NavMindySelection/' + mindyName;
+    location.href = categoryUrl;
 }
 
