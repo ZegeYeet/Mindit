@@ -104,3 +104,7 @@ function FilterCategory(mindyName) {
 
 }
 
+function ClickReplyButton(postId) {
+
+}
+
