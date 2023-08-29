@@ -61,7 +61,7 @@ namespace Mindit.Controllers
             }
 
             var forumPost = await _context.ForumPost
-                .FirstOrDefaultAsync(m => m.PostId == id);
+                .Include(m => m.postVotes).FirstOrDefaultAsync(m => m.PostId == id);
             if (forumPost == null)
             {
                 return NotFound();
@@ -105,6 +105,13 @@ namespace Mindit.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(forumPost);
+        }
+
+        // GET: ForumPosts/CreateReplyPage
+        [Authorize]
+        public IActionResult CreateForumReply()
+        {
+            return View();
         }
 
         // GET: ForumPosts/Edit/5
