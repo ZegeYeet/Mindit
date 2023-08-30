@@ -109,9 +109,20 @@ namespace Mindit.Controllers
 
         // GET: ForumPosts/CreateReplyPage
         [Authorize]
-        public IActionResult CreateForumReply()
+        public async Task<IActionResult> CreateForumReply(int? id)
         {
-            return View();
+            if (id == null || _context.ForumPost == null)
+            {
+                return NotFound();
+            }
+
+            var forumPost = await _context.ForumPost.FirstOrDefaultAsync(m => m.PostId == id);
+            if (forumPost == null)
+            {
+                return NotFound();
+            }
+
+            return View(forumPost);
         }
 
         // GET: ForumPosts/Edit/5
