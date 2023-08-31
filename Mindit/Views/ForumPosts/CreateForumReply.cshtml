@@ -4,10 +4,35 @@
     ViewData["Title"] = "CreateForumReply";
 }
 
-<h1>@Model.postTitle</h1>
+<div>
+    <table class="ReplyTable table-borderless table-responsive">
 
-<h4>@Model.postBody</h4>
-<hr/>
+            <tr>
+                <td>
+                    <h1>@Model.postTitle</h1>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                        @*@Html.DisplayFor(modelItem => item.classIcon)*@
+                    <span style="font-size:10pt">
+                        Posted by
+                            @Html.DisplayFor(modelItem => Model.authorName)
+                        at
+                            @Html.DisplayFor(modelItem => Model.postDate)
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span style="font-size:14pt">@Html.DisplayFor(modelItem => Model.postBody)</span>
+                </td>
+            </tr>
+    </table>
+</div>
+
+
+<hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="CreatePostReply">

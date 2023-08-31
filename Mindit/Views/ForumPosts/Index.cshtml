@@ -17,31 +17,31 @@
     @foreach (var item in Model)
     {
         <div class="row justify-content-center">
-        <table class="table table-borderless table-responsive">
-            <tbody>
-                <tr>
-                    <td>
-                        @*@Html.DisplayFor(modelItem => item.classIcon)*@
-                        <span>
-                            Posted by
-                            @Html.DisplayFor(modelItem => item.authorName)
-                            at
-                            @Html.DisplayFor(modelItem => item.postDate)
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+            <table class="table table-borderless table-responsive">
+                <tbody>
+                    <tr>
+                        <td>
+                            @*@Html.DisplayFor(modelItem => item.classIcon)*@
+                            <span>
+                                Posted by
+                                @Html.DisplayFor(modelItem => item.authorName)
+                                at
+                                @Html.DisplayFor(modelItem => item.postDate)
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
                             <span style="font-size:15pt">@Html.DisplayFor(modelItem => item.postTitle)</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.postBody)
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.postBody)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
 
                             @{
                                 var upvoteImgUrl = "~/Images/upvoteIconEmpty.png";
@@ -80,13 +80,13 @@
                                     style="background-image:url(@Url.Content(downvoteImgUrl))"
                                     onload="SetVoteButtonOnLoad(@item.PostId, this, 'downvote')">
                             </button>
-                            <button class="postReplyButton" name="replyButton"  type="submit" value="@item.PostId" onclick="ClickReplyButton(@item.PostId)">
+                            <button class="postReplyButton" name="replyButton" type="submit" value="@item.PostId" onclick="ClickReplyButton(@item.PostId)">
                                 @Html.ActionLink("Reply", "CreateForumReply", "ForumPosts", new { id = item.PostId})
                             </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     }
 }
@@ -94,7 +94,7 @@ else
 {
     <div class="noPosts">
         <h3>
-            There are no posts yet. <br/>
+            There are no posts yet. <br />
             Why not
             <a asp-action="Create">
                 <span>create</span>
