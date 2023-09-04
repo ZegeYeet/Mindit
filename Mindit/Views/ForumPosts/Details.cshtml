@@ -4,57 +4,36 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>model.mindyName</h1>
+<div>
+    <table class="ReplyTable table-borderless table-responsive">
+
+        <tr>
+            <td>
+                <h1>@Model.postTitle</h1>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.classIcon)*@
+                <span style="font-size:10pt">
+                    Posted by
+                    @Html.DisplayFor(modelItem => Model.authorName)
+                    at
+                    @Html.DisplayFor(modelItem => Model.postDate)
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span style="font-size:14pt">@Html.DisplayFor(modelItem => Model.postBody)</span>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+<hr />
 
 <div>
-    <h4>ForumPost</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.mindyName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.mindyName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.authorName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.authorName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.postDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.postDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.postTitle)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.postTitle)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.postBody)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.postBody)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.postLikes)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.postLikes)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.postDislikes)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.postDislikes)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.PostId">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
