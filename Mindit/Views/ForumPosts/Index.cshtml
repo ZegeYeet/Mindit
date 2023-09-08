@@ -59,7 +59,7 @@
                                     }
                                 }
                             }
-                            <button class="postVoteButton" name="upvoteButton" id="upvoteButton @item.PostId" type="submit" value=initUpvoteValue onclick="ClickVoteButton(@item.PostId, this, voteCountText@(item.PostId))"
+                            <button class="postVoteButton" name="upvoteButton" id="upvoteButton @item.PostId" type="submit" value=@initUpvoteValue onclick="ClickVoteButton(@item.PostId, this, voteCountText@(item.PostId))"
                                     style="background-image:url(@Url.Content(upvoteImgUrl))">
                             </button>
 
@@ -84,7 +84,7 @@
                                     }
                                 }
                             }
-                            <button class="postVoteButton" name="downvoteButton" id="downvoteButton @item.PostId" type="submit" value=initDownvoteValue onclick="ClickVoteButton(@item.PostId, this, voteCountText@(item.PostId))"
+                            <button class="postVoteButton" name="downvoteButton" id="downvoteButton @item.PostId" type="submit" value=@initDownvoteValue onclick="ClickVoteButton(@item.PostId, this, voteCountText@(item.PostId))"
                                     style="background-image:url(@Url.Content(downvoteImgUrl))">
                             </button>
                             <button class="postReplyButton" name="replyButton" type="submit" value="@item.PostId">
