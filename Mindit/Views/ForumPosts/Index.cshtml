@@ -82,7 +82,7 @@
                             }
                             <button class="postVoteButton" name="downvoteButton" id="downvoteButton @item.PostId" type="submit" value="downvoteEmpty"
                                     style="background-image:url(@Url.Content(downvoteImgUrl))"
-                                    onload="SetVoteButtonOnLoad(@item.PostId, this, 'downvote')">
+                                    onclick="ClickVoteButton(@item.PostId, this, voteCountText@(item.PostId))">
                             </button>
                             <button class="postReplyButton" name="replyButton" type="submit" value="@item.PostId">
                                 @Html.ActionLink("Reply", "CreateForumReply", "ForumPosts", new { id = item.PostId})
