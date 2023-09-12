@@ -79,21 +79,21 @@ function SetIconsAfterVote(postId, voteValue) {
     var downvoteButton = document.getElementById("downvoteButton " + postId);
 
     if (voteValue == "upvoteFull") {
-        upvoteButton.style.backgroundImage = "url('Images/upvoteIconFull.png')";
+        upvoteButton.style.backgroundImage = "url('../../Images/upvoteIconFull.png')";
         upvoteButton.value = "upvoteFull";
-        downvoteButton.style.backgroundImage = "url('Images/downvoteIconEmpty.png')";
+        downvoteButton.style.backgroundImage = "url('../../Images/downvoteIconEmpty.png')";
         downvoteButton.value = "downvoteEmpty";
     }
     else if (voteValue == "downvoteFull") {
-        upvoteButton.style.backgroundImage = "url('Images/upvoteIconEmpty.png')";
+        upvoteButton.style.backgroundImage = "url('../../Images/upvoteIconEmpty.png')";
         upvoteButton.value = "upvoteEmpty";
-        downvoteButton.style.backgroundImage = "url('Images/downvoteIconFull.png')";
+        downvoteButton.style.backgroundImage = "url('../../Images/downvoteIconFull.png')";
         downvoteButton.value = "downvoteFull";
     }
     else { //neutral or no vote cases
-        upvoteButton.style.backgroundImage = "url('Images/upvoteIconEmpty.png')";
+        upvoteButton.style.backgroundImage = "url('../../Images/upvoteIconEmpty.png')";
         upvoteButton.value = "upvoteEmpty";
-        downvoteButton.style.backgroundImage = "url('Images/downvoteIconEmpty.png')";
+        downvoteButton.style.backgroundImage = "url('../../Images/downvoteIconEmpty.png')";
         downvoteButton.value = "downvoteEmpty";
     }
 }
