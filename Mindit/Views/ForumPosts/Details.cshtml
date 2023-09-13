@@ -71,6 +71,9 @@
                 <button class="postVoteButton" name="downvoteButton" id="downvoteButton @Model.PostId" type="submit" value=@initDownvoteValue onclick="ClickVoteButton(@Model.PostId, this, voteCountText@(Model.PostId))"
                         style="background-image:url(@Url.Content(downvoteImgUrl))">
                 </button>
+                <button class="postReplyButton" name="replyButton" type="submit" value="@Model.PostId">
+                    @Html.ActionLink("Reply", "CreateForumReply", "ForumPosts", new { id = Model.PostId})
+                </button>
             </td>
         </tr>
     </table>
