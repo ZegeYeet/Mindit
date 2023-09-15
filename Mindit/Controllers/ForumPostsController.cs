@@ -83,8 +83,9 @@ namespace Mindit.Controllers
 
         // GET: ForumPosts/Create
         [Authorize]
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            //var categories = from category in _context.MinditCategoryModel select category;
             return View();
         }
 

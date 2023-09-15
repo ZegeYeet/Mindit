@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Mindit.Data;
 
@@ -11,9 +12,10 @@ using Mindit.Data;
 namespace Mindit.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230915154052_addedCategoryModel")]
+    partial class addedCategoryModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -258,16 +260,6 @@ namespace Mindit.Data.Migrations
                     b.HasKey("PostId");
 
                     b.ToTable("ForumPost");
-                });
-
-            modelBuilder.Entity("Mindit.Models.MinditCategoryModel", b =>
-                {
-                    b.Property<string>("categoryName")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("categoryName");
-
-                    b.ToTable("MinditCategoryModel");
                 });
 
             modelBuilder.Entity("Mindit.Models.PostVotes", b =>
