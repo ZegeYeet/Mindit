@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Mindit.Data;
 using Mindit.Models;
+using Mindit.ViewModels;
 
 namespace Mindit.Controllers
 {
@@ -85,8 +86,14 @@ namespace Mindit.Controllers
         [Authorize]
         public async Task<IActionResult> Create()
         {
-            //var categories = from category in _context.MinditCategoryModel select category;
-            return View();
+            var postCategories = from category in _context.MinditCategoryModel select category;
+            CategoriesPostsViewModel categoryPostsViewModel = new CategoriesPostsViewModel()
+            {
+                forumPost = new ForumPost(),
+                categories = postCategories.ToArray(),
+            };
+
+            return View(categoryPostsViewModel);
         }
 
         // POST: ForumPosts/Create

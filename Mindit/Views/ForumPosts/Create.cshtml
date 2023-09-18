@@ -1,4 +1,4 @@
-﻿@model Mindit.Models.ForumPost
+﻿@model Mindit.ViewModels.CategoriesPostsViewModel
 
 @{
     ViewData["Title"] = "Create";
@@ -14,25 +14,24 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <span asp-for="className" class="control-label">Which Class</span>
-                <select id="DropDownList1" asp-for="mindyName" class="form-control">
+                <select id="DropDownList1" asp-for="@Model.forumPost.mindyName" class="form-control">
                     <option value="">Please Select</option>
-                    <option value="Warcraft">Warcraft</option>
-                    <option value="OSRS">OSRS</option>
-                    <option value="Baldur's Gate'">Baldur's Gate</option>
-                    <option value="Indie RPGs">Indie RPGs</option>
-                    <option value="Game Dev">Game Development</option>
+                    @foreach (var category in Model.categories)
+                    {
+                        <option value="@category.categoryName">@category.categoryName</option>
+                    }
                 </select>
-                <span asp-validation-for="mindyName" class="text-danger"></span>
+                <span asp-validation-for="@Model.forumPost.mindyName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <span asp-for="postTitle" class="control-label">Title</span>
-                <input asp-for="postTitle" class="form-control" />
-                <span asp-validation-for="postTitle" class="text-danger"></span>
+                <input asp-for="@Model.forumPost.postTitle" class="form-control" />
+                <span asp-validation-for="@Model.forumPost.postTitle" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <span asp-for="postBody" class="control-label">Text</span>
-                <textarea asp-for="postBody" class="form-control"></textarea>
-                <span asp-validation-for="postBody" class="text-danger"></span>
+                <textarea asp-for="@Model.forumPost.postBody" class="form-control"></textarea>
+                <span asp-validation-for="@Model.forumPost.postBody" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Post" class="btn btn-primary" />
