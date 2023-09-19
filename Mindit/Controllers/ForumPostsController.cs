@@ -104,6 +104,11 @@ namespace Mindit.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("mindyName,postTitle,postBody")] ForumPost forumPost)
         {
+            if(!_context.MinditCategoryModel.Any(o => o.categoryName == forumPost.mindyName))
+            {
+                return NotFound("Category not found.");
+            }
+
             forumPost.authorName = User.Identity.Name;
 
             if (ModelState.IsValid)
