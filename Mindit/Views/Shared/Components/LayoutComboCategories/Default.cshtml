@@ -1,0 +1,14 @@
+﻿@model IEnumerable<Mindit.Models.MinditCategoryModel>
+
+
+
+<li>
+    <ul>
+        @foreach (var category in Model)
+        {
+            <option value="@category.categoryName">@category.categoryName</option>
+        }
+    </ul>
+</li>
+
+

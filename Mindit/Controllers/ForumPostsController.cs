@@ -339,6 +339,5 @@ namespace Mindit.Controllers
             return Json(new { voteLikes = forumPostToChange.postLikes, voteStyle = pv.voteStyle });
         }
 
-
     }
 }

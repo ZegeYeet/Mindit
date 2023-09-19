@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -25,11 +27,7 @@
                         <li>
                             <select id="DropDownList1" class="form-control" onchange="FilterCategory(this.value)">
                                 <option value="">View Category</option>
-                                <option value="Warcraft">Warcraft</option>
-                                <option value="OSRS">OSRS</option>
-                                <option value="Baldur's Gate'">Baldur's Gate</option>
-                                <option value="Indie RPGs">Indie RPGs</option>
-                                <option value="Game Dev">Game Dev</option>
+                                @await Component.InvokeAsync("LayoutComboCategories")
                             </select>
                         </li>
                     </ul>

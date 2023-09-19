@@ -514,3 +514,10 @@ C:\Users\Travis Johnson\Desktop\code related\asp.net\Reddite-like\Mindit\obj\Deb
 C:\Users\Travis Johnson\Desktop\code related\asp.net\Reddite-like\Mindit\obj\Debug\net6.0\Mindit.csproj.CopyComplete
 C:\Users\Travis Johnson\Desktop\code related\asp.net\Reddite-like\Mindit\obj\Debug\net6.0\Mindit.genruntimeconfig.cache
 C:\Users\Travis Johnson\Desktop\code related\asp.net\Reddite-like\Mindit\obj\Debug\net6.0\ref\Mindit.dll
+C:\Users\Travis Johnson\Desktop\code related\asp.net\Reddite-like\Mindit\bin\Debug\net6.0\System.Web.Mvc.dll
+C:\Users\Travis Johnson\Desktop\code related\asp.net\Reddite-like\Mindit\bin\Debug\net6.0\System.Web.Razor.dll
+C:\Users\Travis Johnson\Desktop\code related\asp.net\Reddite-like\Mindit\bin\Debug\net6.0\System.Web.Helpers.dll
+C:\Users\Travis Johnson\Desktop\code related\asp.net\Reddite-like\Mindit\bin\Debug\net6.0\System.Web.WebPages.Deployment.dll
+C:\Users\Travis Johnson\Desktop\code related\asp.net\Reddite-like\Mindit\bin\Debug\net6.0\System.Web.WebPages.Razor.dll
+C:\Users\Travis Johnson\Desktop\code related\asp.net\Reddite-like\Mindit\bin\Debug\net6.0\System.Web.WebPages.dll
+C:\Users\Travis Johnson\Desktop\code related\asp.net\Reddite-like\Mindit\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll
