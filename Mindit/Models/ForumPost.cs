@@ -25,6 +25,7 @@ namespace Mindit.Models
         public int postDislikes { get; set; }
 
         public virtual ICollection<PostVotes>? postVotes { get; set; }
+        public virtual ICollection<ForumReply>? forumReplies { get; set; }
 
         public ForumPost()
         {
@@ -32,6 +33,7 @@ namespace Mindit.Models
             this.postLikes = 0;
             this.postDislikes = 0;
             postVotes = new List<PostVotes>();
+            forumReplies = new List<ForumReply>();
         }
 
 
