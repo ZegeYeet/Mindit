@@ -1,5 +1,6 @@
 ﻿
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Mindit.Models
 {
@@ -10,6 +11,9 @@ namespace Mindit.Models
         public string? authorName { get; set; }
 
 
+        public int PostId { get; set; }
+        [ForeignKey("PostId")]
+        public ForumPost forumPost { get; set; }
         [Required]
         public DateTime replyDate { get; set; }
         [Required]
