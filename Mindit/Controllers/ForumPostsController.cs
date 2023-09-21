@@ -120,24 +120,52 @@ namespace Mindit.Controllers
             return View(forumPost);
         }
 
-        // GET: ForumPosts/CreateReplyPage
+        /*
+        [HttpPost]
         [Authorize]
-        public async Task<IActionResult> CreateForumReply(int? id)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateReply([Bind("replyBody")] ForumReply forumReply)
         {
-            if (id == null || _context.ForumPost == null)
+            //get current post
+            var forumPostToChange = await _context.ForumPost
+                .Include(m => m.postVotes)
+                .FirstOrDefaultAsync(m => m.PostId == postId);
+
+
+            if (forumPostToChange == null)
             {
-                return NotFound();
+                return Problem("no post found");
             }
 
-            var forumPost = await _context.ForumPost
-                .Include(m => m.postVotes).FirstOrDefaultAsync(m => m.PostId == id);
-            if (forumPost == null)
+
+            //get current vote status for the post&user
+            PostVotes pv;
+            if (forumPostToChange.postVotes.Any(p => p.userName == User.Identity.Name))
             {
-                return NotFound();
+                Debug.WriteLine("found a vote for the post by the user");
+                pv = forumPostToChange.postVotes.FirstOrDefault(p => p.userName == User.Identity.Name);
+            }
+            else
+            {
+                Debug.WriteLine("did not find a vote for the post by the user");
+                pv = new PostVotes();
+                pv.userName = User.Identity.Name;
+                pv.voteStyle = voteValue;
+                forumPostToChange.postVotes.Add(pv);
+
             }
 
-            return View(forumPost);
-        }
+
+            forumReply.authorName = User.Identity.Name;
+
+            if (ModelState.IsValid)
+            {
+                _context.Add(forumReply);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View("Details", forumReply.PostId);
+        }*/
 
         // GET: ForumPosts/Edit/5
         [Authorize]

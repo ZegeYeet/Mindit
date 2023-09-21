@@ -88,7 +88,7 @@
                                     style="background-image:url(@Url.Content(downvoteImgUrl))">
                             </button>
                             <button class="postReplyButton" name="replyButton" type="submit" value="@item.PostId">
-                                @Html.ActionLink("Reply", "CreateForumReply", "ForumPosts", new { id = item.PostId})
+                                @Html.ActionLink("Reply", "Details", "ForumPosts", new { id = item.PostId})
                             </button>
                         </td>
                     </tr>

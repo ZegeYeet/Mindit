@@ -14,18 +14,18 @@
         </tr>
         <tr>
             <td>
-                @*@Html.DisplayFor(Model => item.classIcon)*@
+                @*@Html.DisplayFor(modelItem => item.classIcon)*@
                 <span style="font-size:10pt">
                     Posted by
-                    @Html.DisplayFor(Model => Model.authorName)
+                    @Html.DisplayFor(modelItem => Model.authorName)
                     at
-                    @Html.DisplayFor(Model => Model.postDate)
+                    @Html.DisplayFor(modelItem => Model.postDate)
                 </span>
             </td>
         </tr>
         <tr>
             <td>
-                <span style="font-size:14pt">@Html.DisplayFor(Model => Model.postBody)</span>
+                <span style="font-size:14pt">@Html.DisplayFor(modelItem => Model.postBody)</span>
             </td>
         </tr>
         <tr>
@@ -71,9 +71,6 @@
                 <button class="postVoteButton" name="downvoteButton" id="downvoteButton @Model.PostId" type="submit" value=@initDownvoteValue onclick="ClickVoteButton(@Model.PostId, this, voteCountText@(Model.PostId))"
                         style="background-image:url(@Url.Content(downvoteImgUrl))">
                 </button>
-                <button class="postReplyButton" name="replyButton" type="submit" value="@Model.PostId">
-                    @Html.ActionLink("Reply", "CreateForumReply", "ForumPosts", new { id = Model.PostId})
-                </button>
             </td>
         </tr>
     </table>
@@ -81,7 +78,28 @@
 
 
 <hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreatePostReply">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <!--<span class="control-label">Reply Text:</span>-->
+                <textarea class="form-control"></textarea>
+                <!--<span asp-validation-for="replyBody" class="text-danger"></span>-->
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Post" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
 
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
