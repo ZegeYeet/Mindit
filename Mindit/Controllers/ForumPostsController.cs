@@ -48,9 +48,16 @@ namespace Mindit.Controllers
         // PoST: ForumPost/showSearchResults
         public async Task<IActionResult> ShowSearchResults(string SearchPhrase)
         {
-            return _context.ForumPost != null ?
-                        View("Index", await _context.ForumPost.Where(j => j.postBody.Contains(SearchPhrase)).ToListAsync()) :
-                        Problem("Entity set 'ApplicationDbContext.WowClass'  is null.");
+            if(_context.ForumPost == null)
+            {
+                return Problem("ApplicationDbContext is null.");
+            }
+
+            var forumPosts = (_context.ForumPost.Where(j => j.postBody.Contains(SearchPhrase))
+                .Include(m => m.postVotes)).Union(_context.ForumPost.Where(p => p.postTitle.Contains(SearchPhrase))
+                .Include(pv => pv.postVotes)).OrderByDescending(i => i.postDate);
+
+            return View("Index", forumPosts);
         }
 
         // GET: ForumPosts/Details/5
