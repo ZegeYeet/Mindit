@@ -1,4 +1,4 @@
-﻿@model Mindit.Models.ForumPost
+﻿@model Mindit.ViewModels.PostDetailsPageViewModel;
 
 @{
     ViewData["Title"] = "Details";
@@ -9,7 +9,7 @@
 
         <tr>
             <td>
-                <h1>@Model.postTitle</h1>
+                <h1>@Model.forumPost.postTitle</h1>
             </td>
         </tr>
         <tr>
@@ -17,15 +17,15 @@
                 @*@Html.DisplayFor(modelItem => item.classIcon)*@
                 <span style="font-size:10pt">
                     Posted by
-                    @Html.DisplayFor(modelItem => Model.authorName)
+                    @Html.DisplayFor(modelItem => Model.forumPost.authorName)
                     at
-                    @Html.DisplayFor(modelItem => Model.postDate)
+                    @Html.DisplayFor(modelItem => Model.forumPost.postDate)
                 </span>
             </td>
         </tr>
         <tr>
             <td>
-                <span style="font-size:14pt">@Html.DisplayFor(modelItem => Model.postBody)</span>
+                <span style="font-size:14pt">@Html.DisplayFor(modelItem => Model.forumPost.postBody)</span>
             </td>
         </tr>
         <tr>
@@ -34,23 +34,23 @@
                 @{
                     var upvoteImgUrl = "~/Images/upvoteIconEmpty.png";
                     var initUpvoteValue = "upvoteEmpty";
-                    if (Model.postVotes.Any(p => p.userName == User.Identity.Name))
+                    if (Model.forumPost.postVotes.Any(p => p.userName == User.Identity.Name))
                     {
-                        if (Model.postVotes.FirstOrDefault(p => p.userName == User.Identity.Name).voteStyle == "upvoteFull")
+                        if (Model.forumPost.postVotes.FirstOrDefault(p => p.userName == User.Identity.Name).voteStyle == "upvoteFull")
                         {
                             upvoteImgUrl = "~/Images/upvoteIconFull.png";
                             initUpvoteValue = "upvoteFull";
                         }
                     }
                 }
-                <button class="postVoteButton" name="upvoteButton" id="upvoteButton @Model.PostId" type="submit" value=@initUpvoteValue onclick="ClickVoteButton(@Model.PostId, this, voteCountText@(Model.PostId))"
+                <button class="postVoteButton" name="upvoteButton" id="upvoteButton @Model.forumPost.PostId" type="submit" value=@initUpvoteValue onclick="ClickVoteButton(@Model.forumPost.PostId, this, voteCountText@(Model.forumPost.PostId))"
                         style="background-image:url(@Url.Content(upvoteImgUrl))">
                 </button>
 
 
                 @{
-                    var postLikeSum = Model.postLikes - Model.postDislikes;
-                    <span id='voteCountText@(Model.PostId)'>
+                    var postLikeSum = Model.forumPost.postLikes - Model.forumPost.postDislikes;
+                    <span id='voteCountText@(Model.forumPost.PostId)'>
                         @Html.DisplayFor(Model => postLikeSum)
                     </span>
                 }
@@ -59,16 +59,16 @@
                 @{
                     var downvoteImgUrl = "~/Images/downvoteIconEmpty.png";
                     var initDownvoteValue = "downvoteEmpty";
-                    if (Model.postVotes.Any(p => p.userName == User.Identity.Name))
+                    if (Model.forumPost.postVotes.Any(p => p.userName == User.Identity.Name))
                     {
-                        if (Model.postVotes.FirstOrDefault(p => p.userName == User.Identity.Name).voteStyle == "downvoteFull")
+                        if (Model.forumPost.postVotes.FirstOrDefault(p => p.userName == User.Identity.Name).voteStyle == "downvoteFull")
                         {
                             downvoteImgUrl = "~/Images/downvoteIconFull.png";
                             initDownvoteValue = "downvoteFull";
                         }
                     }
                 }
-                <button class="postVoteButton" name="downvoteButton" id="downvoteButton @Model.PostId" type="submit" value=@initDownvoteValue onclick="ClickVoteButton(@Model.PostId, this, voteCountText@(Model.PostId))"
+                <button class="postVoteButton" name="downvoteButton" id="downvoteButton @Model.forumPost.PostId" type="submit" value=@initDownvoteValue onclick="ClickVoteButton(@Model.forumPost.PostId, this, voteCountText@(Model.forumPost.PostId))"
                         style="background-image:url(@Url.Content(downvoteImgUrl))">
                 </button>
             </td>

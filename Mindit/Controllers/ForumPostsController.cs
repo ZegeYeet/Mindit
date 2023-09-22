@@ -75,7 +75,11 @@ namespace Mindit.Controllers
                 return NotFound();
             }
 
-            return View(forumPost);
+            PostDetailsPageViewModel postDetailsPageViewModel = new PostDetailsPageViewModel();
+            postDetailsPageViewModel.forumPost = forumPost;
+            postDetailsPageViewModel.forumReply = new ForumReply();
+
+            return View(postDetailsPageViewModel);
         }
 
         public async Task<IActionResult> NavMindySelection(string navClass)
