@@ -1,0 +1,60 @@
+﻿@model Mindit.Models.ForumReply
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>ForumReply</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ReplyId" />
+            <div class="form-group">
+                <label asp-for="authorName" class="control-label"></label>
+                <input asp-for="authorName" class="form-control" />
+                <span asp-validation-for="authorName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PostId" class="control-label"></label>
+                <select asp-for="PostId" class="form-control" asp-items="ViewBag.PostId"></select>
+                <span asp-validation-for="PostId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="replyDate" class="control-label"></label>
+                <input asp-for="replyDate" class="form-control" />
+                <span asp-validation-for="replyDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="replyBody" class="control-label"></label>
+                <input asp-for="replyBody" class="form-control" />
+                <span asp-validation-for="replyBody" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="replyLikes" class="control-label"></label>
+                <input asp-for="replyLikes" class="form-control" />
+                <span asp-validation-for="replyLikes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="replyDislikes" class="control-label"></label>
+                <input asp-for="replyDislikes" class="form-control" />
+                <span asp-validation-for="replyDislikes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

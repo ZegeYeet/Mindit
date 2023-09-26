@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Mindit.Models.ForumReply>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.authorName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.forumPost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.replyDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.replyBody)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.replyLikes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.replyDislikes)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.authorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.forumPost.postBody)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.replyDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.replyBody)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.replyLikes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.replyDislikes)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ReplyId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ReplyId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ReplyId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
