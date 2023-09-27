@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Mindit.Data;
 using Mindit.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Mindit.Controllers
 {
@@ -46,27 +47,47 @@ namespace Mindit.Controllers
         }
 
         // GET: ForumReplies/Create
-        public IActionResult Create()
+        /*public IActionResult Create()
         {
             ViewData["PostId"] = new SelectList(_context.ForumPost, "PostId", "postBody");
             return View();
-        }
+        }*/
 
         // POST: ForumReplies/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ReplyId,authorName,PostId,replyDate,replyBody,replyLikes,replyDislikes")] ForumReply forumReply)
+        public async Task<IActionResult> Create([Bind("PostId,replyBody")] ForumReply forumReply)
         {
-            if (ModelState.IsValid)
+            //forumReply.PostId;
+
+            //get current post
+            var forumPostToChange = await _context.ForumPost
+                .Include(m => m.postVotes)
+                .FirstOrDefaultAsync(m => m.PostId == forumReply.PostId);
+
+
+            if (forumPostToChange == null)
+            {
+                return Problem("no post found");
+            }
+
+            forumReply.authorName = User.Identity.Name;
+            forumPostToChange.forumReplies.Add(forumReply);
+
+            _context.Entry(forumPostToChange).State = EntityState.Modified;
+            _context.SaveChanges();
+
+            /*if (ModelState.IsValid)
             {
                 _context.Add(forumReply);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["PostId"] = new SelectList(_context.ForumPost, "PostId", "postBody", forumReply.PostId);
-            return View(forumReply);
+                return RedirectToAction("Index", "ForumPosts", forumReply.PostId);
+            }*/
+            //ViewData["PostId"] = new SelectList(_context.ForumPost, "PostId", "postBody", forumReply.PostId);*/
+            return RedirectToAction("Details", "ForumPosts", new {id = forumReply.PostId });
         }
 
         // GET: ForumReplies/Edit/5
