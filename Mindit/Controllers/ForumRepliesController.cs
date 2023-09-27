@@ -87,7 +87,7 @@ namespace Mindit.Controllers
                 return RedirectToAction("Index", "ForumPosts", forumReply.PostId);
             }*/
             //ViewData["PostId"] = new SelectList(_context.ForumPost, "PostId", "postBody", forumReply.PostId);*/
-            return RedirectToAction("Details", "ForumPosts", new {id = forumReply.PostId });
+            return RedirectToAction("Details", "ForumPosts", new { id = forumReply.PostId });
         }
 
         // GET: ForumReplies/Edit/5
