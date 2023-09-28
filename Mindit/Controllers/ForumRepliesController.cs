@@ -80,13 +80,6 @@ namespace Mindit.Controllers
             _context.Entry(forumPostToChange).State = EntityState.Modified;
             _context.SaveChanges();
 
-            /*if (ModelState.IsValid)
-            {
-                _context.Add(forumReply);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("Index", "ForumPosts", forumReply.PostId);
-            }*/
-            //ViewData["PostId"] = new SelectList(_context.ForumPost, "PostId", "postBody", forumReply.PostId);*/
             return RedirectToAction("Details", "ForumPosts", new { id = forumReply.PostId });
         }
 
@@ -110,6 +103,7 @@ namespace Mindit.Controllers
         // POST: ForumReplies/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ReplyId,authorName,PostId,replyDate,replyBody,replyLikes,replyDislikes")] ForumReply forumReply)
@@ -163,6 +157,7 @@ namespace Mindit.Controllers
         }
 
         // POST: ForumReplies/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
