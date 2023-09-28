@@ -47,8 +47,17 @@ body {
     float: right;
 }
 
-.ReplyTable {
+.DetailsTable {
     width: 50%;
+    padding: 10px;
+    background-color: #ddd;
+    border: 1px solid;
+    border-collapse: separate;
+    border-color: #ccc;
+}
+
+.ReplyTable {
+    width: 40%;
     padding: 10px;
     background-color: #ddd;
     border: 1px solid;

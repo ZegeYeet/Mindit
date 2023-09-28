@@ -5,7 +5,7 @@
 }
 
 <div>
-    <table class="ReplyTable table-borderless table-responsive">
+    <table class="DetailsTable table-borderless table-responsive">
 
         <tr>
             <td>
@@ -104,8 +104,8 @@
         @foreach (var reply in Model.forumPost.forumReplies)
         {
             <div>
-                <span>
-                    reply from @reply.authorName
+                <span style="font-size: 10pt">
+                    reply from @reply.authorName at @reply.replyDate
                 </span>
                 <br>
                 <span>
