@@ -77,7 +77,6 @@
 </div>
 
 
-<hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-controller="ForumReplies" asp-action="Create" asp->
@@ -95,6 +94,25 @@
                 <input type="submit" value="Reply" class="btn btn-primary" />
             </div>
         </form>
+    </div>
+</div> 
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        @foreach (var reply in Model.forumPost.forumReplies)
+        {
+            <div>
+                <span>
+                    reply from @reply.authorName
+                </span>
+                <br>
+                <span>
+                    @reply.replyBody
+                </span>
+            </div>
+        }
     </div>
 </div>
 

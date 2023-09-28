@@ -69,7 +69,7 @@ namespace Mindit.Controllers
             }
 
             var forumPost = await _context.ForumPost
-                .Include(m => m.postVotes).FirstOrDefaultAsync(m => m.PostId == id);
+                .Include(m => m.postVotes).Include(r => r.forumReplies).FirstOrDefaultAsync(m => m.PostId == id);
             if (forumPost == null)
             {
                 return NotFound();
