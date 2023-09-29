@@ -100,21 +100,32 @@
 
 <hr />
 <div class="row">
-    <div class="col-md-4">
         @foreach (var reply in Model.forumPost.forumReplies)
         {
-            <div>
-                <span style="font-size: 10pt">
-                    reply from @reply.authorName at @reply.replyDate
-                </span>
-                <br>
-                <span>
-                    @reply.replyBody
-                </span>
+            <div style="padding-top: 5px">
+                <table class="ReplyTable table-borderless table-responsive">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span style="font-size: 10pt">
+                                    reply from @reply.authorName at @reply.replyDate
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span>
+                                    @reply.replyBody
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         }
-    </div>
 </div>
+
+
 
 <div>
     <a asp-action="Index">Back to List</a>
