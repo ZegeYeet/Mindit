@@ -7,9 +7,9 @@
 
 async function ClickVoteButton(postId, voteButton, voteCountText)
 {
-    if (ForumPostChangeVote(postId, voteButton.value, voteCountText)) {
-        ToggleVoteButtonIcon(voteButton);
-    }
+    ForumPostChangeVote(postId, voteButton.value, voteCountText)
+        //ToggleVoteButtonIcon(voteButton);
+    
     
 }
 
@@ -61,12 +61,15 @@ async function ForumPostChangeVote(postId, newVoteValue, voteCountText) {
         data: { 'postID': postId, 'voteValue': newVoteValue },
         dataType: 'json',
         success: function (data) {
-            ForumPostRefreshVotes(postId, voteCountText);
-            SetIconsAfterVote(postId, data.voteStyle);
+            if (data.voteStyle != null) {
+                ForumPostRefreshVotes(postId, voteCountText);
+                SetIconsAfterVote(postId, data.voteStyle);
+                ToggleVoteButtonIcon(voteButton);
+            }
             return true;
         },
         error: function (error) {
-            console.log(error);
+            console.log("error: " + error);
         }
     });
 
