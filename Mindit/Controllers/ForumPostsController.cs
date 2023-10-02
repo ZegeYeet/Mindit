@@ -29,7 +29,7 @@ namespace Mindit.Controllers
         public async Task<IActionResult> Index()
         {
             var forumPosts = from post in _context.ForumPost
-                .Include(m => m.postVotes).OrderByDescending(i => i.postDate)
+                .Include(m => m.postVotes).Include(r => r.forumReplies).OrderByDescending(i => i.postDate)
                              select post;
 
             return _context.ForumPost != null ?
