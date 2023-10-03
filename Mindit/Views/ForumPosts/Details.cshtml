@@ -14,12 +14,15 @@
         </tr>
         <tr>
             <td>
-                @*@Html.DisplayFor(modelItem => item.classIcon)*@
-                <span style="font-size:10pt">
-                    Posted by
-                    @Html.DisplayFor(modelItem => Model.forumPost.authorName)
-                    at
-                    @Html.DisplayFor(modelItem => Model.forumPost.postDate)
+                <span style="font-size:10.5pt; text-align:left;">
+                    <span style="font-weight:bold;">
+                        @Model.forumPost.authorName
+                    </span>
+                    posted in
+                    <span style="font-weight:bold;">
+                        @Model.forumPost.mindyName
+                    </span>
+                    at @Model.forumPost.postDate
                 </span>
             </td>
         </tr>
