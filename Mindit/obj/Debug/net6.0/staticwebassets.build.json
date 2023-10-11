@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "rRq67QPbHqmSGG2NDa+TuwRit6sduYl1iy8VDmMqq7U=",
+  "Hash": "vCwnZbzGKerscC0JDJBCUWaxdSWudy0S5U9eR8NyKFM=",
   "Source": "Mindit",
   "BasePath": "_content/Mindit",
   "Mode": "Default",
@@ -1205,6 +1205,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\upvoteIconFull.png"
+    },
+    {
+      "Identity": "C:\\Users\\Travis Johnson\\Desktop\\code related\\asp.net\\Reddite-like\\Mindit\\wwwroot\\Images\\UserPictures\\default user profile pic.png",
+      "SourceId": "Mindit",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Travis Johnson\\Desktop\\code related\\asp.net\\Reddite-like\\Mindit\\wwwroot\\",
+      "BasePath": "_content/Mindit",
+      "RelativePath": "Images/UserPictures/default user profile pic.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\UserPictures\\default user profile pic.png"
     },
     {
       "Identity": "C:\\Users\\Travis Johnson\\Desktop\\code related\\asp.net\\Reddite-like\\Mindit\\wwwroot\\js\\site.js",
