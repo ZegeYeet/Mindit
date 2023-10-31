@@ -112,5 +112,7 @@ namespace Mindit.Areas.Identity.Pages.Account.Manage
             StatusMessage = "Your profile has been updated";
             return RedirectToPage();
         }
+
+        
     }
 }
