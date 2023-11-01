@@ -14,5 +14,6 @@ namespace Mindit.Data
         public DbSet<Mindit.Models.PostVotes>? PostVotes { get; set; }
         public DbSet<Mindit.Models.MinditCategoryModel>? MinditCategoryModel { get; set; }
         public DbSet<Mindit.Models.ForumReply>? ForumReply { get; set; }
+        public DbSet<Mindit.Models.ApplicationUser>? ApplicationUser { get; set; }
     }
 }
