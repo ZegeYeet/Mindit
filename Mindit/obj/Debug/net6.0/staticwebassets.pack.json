@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\Mindit.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Travis Johnson\\Desktop\\code related\\asp.net\\Reddite-like\\Mindit\\wwwroot\\Images\\UserPictures\\default user profile pic(salmon color).png",
+      "PackagePath": "staticwebassets\\Images\\UserPictures\\default user profile pic(salmon color).png"
+    },
+    {
       "Id": "C:\\Users\\Travis Johnson\\Desktop\\code related\\asp.net\\Reddite-like\\Mindit\\wwwroot\\Images\\UserPictures\\default user profile pic.png",
       "PackagePath": "staticwebassets\\Images\\UserPictures\\default user profile pic.png"
     },

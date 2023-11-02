@@ -13,16 +13,20 @@ using Microsoft.EntityFrameworkCore;
 using Mindit.Data;
 using Mindit.Models;
 using Mindit.ViewModels;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.VisualBasic;
 
 namespace Mindit.Controllers
 {
     public class ForumPostsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public ForumPostsController(ApplicationDbContext context)
+        public ForumPostsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: ForumPosts
@@ -334,6 +338,24 @@ namespace Mindit.Controllers
             
 
             return Json(new { voteLikes = forumPostToChange.postLikes, voteStyle = pv.voteStyle });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GetPostAvatarString(string authorName)
+        {
+            var user = await _userManager.FindByNameAsync(authorName);
+
+
+            if (user == null)
+            {
+                Problem("no user found for avatar");
+            }
+
+
+
+
+            return Json(new { avatarString = user.AvatarString });
+
         }
 
     }

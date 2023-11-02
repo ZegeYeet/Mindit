@@ -22,7 +22,12 @@
                     <tr>
                         <td>
                             @*@Html.DisplayFor(modelItem => item.classIcon)*@
-                            <img style="width:20px;height:20px;" src="~/Images/UserPictures/default user profile pic.png">
+                            @{
+                                var avatarName = "default user profile pic.png";
+                                //@:GetAvatarString(item.authorName); //"default user profile pic.png";
+                                
+                            }
+                            <img style="width:20px;height:20px;" src="~/Images/UserPictures/@avatarName">
                             <span style="font-size:10.5pt; text-align:left;">
                                 <span style="font-weight:bold;">
                                     @item.authorName
