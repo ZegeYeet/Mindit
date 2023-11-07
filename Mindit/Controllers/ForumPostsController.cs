@@ -79,6 +79,8 @@ namespace Mindit.Controllers
                 return NotFound();
             }
 
+            
+
             PostDetailsPageViewModel postDetailsPageViewModel = new PostDetailsPageViewModel();
             postDetailsPageViewModel.forumPost = forumPost;
             postDetailsPageViewModel.forumReply = new ForumReply();

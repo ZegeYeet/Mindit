@@ -14,7 +14,15 @@
         </tr>
         <tr>
             <td>
-                <img style="width:22px;height:22px;" src="~/Images/UserPictures/default user profile pic.png">
+                @{
+                    var avatarName = Model.avatarString;
+                    if (Model.avatarString == null || Model.avatarString == "")
+                    {
+                        avatarName = "default user profile pic.png";
+                    }
+                    
+                }
+                <img style="width:20px;height:20px;" src="~/Images/UserPictures/@avatarName">
                 <span style="font-size:11pt; text-align:left;">
                     <span style="font-weight:bold;">
                         @Model.forumPost.authorName
