@@ -22,6 +22,7 @@ namespace Mindit.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
+        //private readonly UserManager<ApplicationUser> uuserManager;
 
         public ForumPostsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
@@ -79,11 +80,16 @@ namespace Mindit.Controllers
                 return NotFound();
             }
 
-            
+            var poster = await _userManager.FindByNameAsync(forumPost.authorName);
 
+            
             PostDetailsPageViewModel postDetailsPageViewModel = new PostDetailsPageViewModel();
             postDetailsPageViewModel.forumPost = forumPost;
             postDetailsPageViewModel.forumReply = new ForumReply();
+            if (poster != null)
+            {
+                postDetailsPageViewModel.avatarString = poster.AvatarString;
+            }
 
             return View(postDetailsPageViewModel);
         }
