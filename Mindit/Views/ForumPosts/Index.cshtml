@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Mindit.Models.ForumPost>
+﻿@model Mindit.ViewModels.PostIndexViewModel
 
 @{
     ViewData["Title"] = "Index";
@@ -6,25 +6,27 @@
 
 
 
-@if (Model.Any())
+@if (Model.indexForumPosts.Any())
 {
     <h1>Welcome to Mindit!</h1>
     <p>
         <a asp-action="Create">Create Post</a>
     </p>
 
-
-    @foreach (var item in Model)
+    int itemCount = 0;
+    @foreach (var item in Model.indexForumPosts)
     {
         <div class="row justify-content-center">
             <table class="table table-borderless table-responsive">
                 <tbody>
                     <tr>
                         <td>
-                            @*@Html.DisplayFor(modelItem => item.classIcon)*@
                             @{
-                                var avatarName = "default user profile pic.png";
-                                //@:GetAvatarString(item.authorName); //"default user profile pic.png";
+                                var avatarName = Model.indexAvatarStrings[itemCount];
+                                if (avatarName == null)
+                                {
+                                    avatarName = "default user profile pic.png";
+                                }
                             }
                             <img style="width:20px;height:20px;" src="~/Images/UserPictures/@avatarName">
                             <span style="font-size:10.5pt; text-align:left;">
@@ -104,6 +106,8 @@
                 </tbody>
             </table>
         </div>
+
+        itemCount++;
     }
 }
 else

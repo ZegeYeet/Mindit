@@ -37,9 +37,27 @@ namespace Mindit.Controllers
                 .Include(m => m.postVotes).Include(r => r.forumReplies).OrderByDescending(i => i.postDate)
                              select post;
 
-            return _context.ForumPost != null ?
-                        View("Index", await forumPosts.ToListAsync()) :
-                        Problem("Entity set 'ApplicationDbContext.WowClass'  is null.");
+            if (forumPosts == null)
+            {
+                return Problem("Entity set 'ApplicationDbContext.WowClass'  is null.");
+            }
+
+            PostIndexViewModel postIndVM = new PostIndexViewModel();
+            postIndVM.indexForumPosts = await forumPosts.ToListAsync();
+
+            foreach (var item in postIndVM.indexForumPosts)
+            {
+                string avatarString = await GetPostAvatarString(item.authorName);
+                
+                postIndVM.indexAvatarStrings.Add(avatarString);
+            }
+
+            foreach (var item in postIndVM.indexAvatarStrings)
+            {
+                Debug.WriteLine("string = " + item);
+            }
+
+            return View("Index", postIndVM);
         }
 
         // GET: ForumPost/search
@@ -348,21 +366,19 @@ namespace Mindit.Controllers
             return Json(new { voteLikes = forumPostToChange.postLikes, voteStyle = pv.voteStyle });
         }
 
-        [HttpPost]
-        public async Task<IActionResult> GetPostAvatarString(string authorName)
+        public async Task<string> GetPostAvatarString(string authorName)
         {
             var user = await _userManager.FindByNameAsync(authorName);
 
-
-            if (user == null)
+            if (user.AvatarString == null)
             {
-                Problem("no user found for avatar");
+                return null;
             }
 
 
 
 
-            return Json(new { avatarString = user.AvatarString });
+            return user.AvatarString;
 
         }
 
