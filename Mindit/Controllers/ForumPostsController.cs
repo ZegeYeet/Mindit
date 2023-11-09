@@ -98,16 +98,13 @@ namespace Mindit.Controllers
                 return NotFound();
             }
 
-            var poster = await _userManager.FindByNameAsync(forumPost.authorName);
+            string avatarString = await GetPostAvatarString(forumPost.authorName);
 
-            
+
             PostDetailsPageViewModel postDetailsPageViewModel = new PostDetailsPageViewModel();
             postDetailsPageViewModel.forumPost = forumPost;
             postDetailsPageViewModel.forumReply = new ForumReply();
-            if (poster != null)
-            {
-                postDetailsPageViewModel.avatarString = poster.AvatarString;
-            }
+            postDetailsPageViewModel.avatarString = avatarString;
 
             return View(postDetailsPageViewModel);
         }

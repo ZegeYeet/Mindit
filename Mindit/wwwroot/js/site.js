@@ -106,25 +106,4 @@ function FilterCategory(mindyName) {
 }
 
 
-function GetAvatarString(authorName) {
-    $.ajax({
-        url: '/ForumPosts/GetPostAvatarString/',
-        type: 'GET',
-        data: { 'authorName': authorName },
-        dataType: 'json',
-        success: function (data) {
-            if (data.avatarString != null) {
-
-                console.log("avatar string for " + authorName + ": " + data.avatarString);
-                return data.avatarString;
-            }
-            else {
-                return null;
-            }
-        },
-        error: function (error) {
-            console.log("error: " + error);
-        }
-    });
-}
 
