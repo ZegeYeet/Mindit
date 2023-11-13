@@ -6,21 +6,25 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-
+using Mindit.FileUploadService;
+using Mindit.Models;
 
 namespace Mindit.Areas.Identity.Pages.Account.Manage
 {
     public class Avatar : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly IFileUploadService _fileUploadService;
 
         public Avatar(
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager)
+            UserManager<ApplicationUser> userManager,
+            SignInManager<ApplicationUser> signInManager,
+            IFileUploadService fileUploadService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _fileUploadService = fileUploadService;
         }
 
         /// <summary>
@@ -58,7 +62,7 @@ namespace Mindit.Areas.Identity.Pages.Account.Manage
             public string PhoneNumber { get; set; }
         }
 
-        private async Task LoadAsync(IdentityUser user)
+        private async Task LoadAsync(ApplicationUser user)
         {
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
@@ -83,7 +87,7 @@ namespace Mindit.Areas.Identity.Pages.Account.Manage
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(IFormFile file)
         {
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
@@ -91,18 +95,17 @@ namespace Mindit.Areas.Identity.Pages.Account.Manage
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
-            if (!ModelState.IsValid)
+            if (file != null)
             {
-                await LoadAsync(user);
-                return Page();
+                await _fileUploadService.UploadFileAsync(file);
+
+
+                await _signInManager.RefreshSignInAsync(user);
+                StatusMessage = "Your profile has been updated";
+                return RedirectToPage();
             }
 
-
-
-
-            await _signInManager.RefreshSignInAsync(user);
-            StatusMessage = "Your profile has been updated";
-            return RedirectToPage();
+            return Page();
         }
 
     }

@@ -10,7 +10,7 @@ namespace Mindit.FileUploadService
             this._webHostEnvironment = environment;
         }
 
-        public async Task<string> UploadFile(IFormFile file)
+        public async Task<string> UploadFileAsync(IFormFile file)
         {
             var filePath = Path.Combine(_webHostEnvironment.ContentRootPath, "Images/UserPictures", file.FileName);
 
