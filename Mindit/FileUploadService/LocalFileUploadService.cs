@@ -12,7 +12,7 @@ namespace Mindit.FileUploadService
 
         public async Task<string> UploadFileAsync(IFormFile file)
         {
-            var filePath = Path.Combine(_webHostEnvironment.ContentRootPath, "Images/UserPictures", file.FileName);
+            var filePath = Path.Combine(_webHostEnvironment.ContentRootPath, "wwwroot/Images/UserPictures", file.FileName);
 
             using var FileStream = new FileStream(filePath, FileMode.Create);
             await file.CopyToAsync(FileStream);
