@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
@@ -99,14 +100,36 @@ namespace Mindit.Areas.Identity.Pages.Account.Manage
             {
                 await _fileUploadService.UploadFileAsync(file);
 
+                var currentAvatarString = user.AvatarString;
+                if (file.FileName != currentAvatarString)
+                {
+                    var setAvatarResult = await SetAvatarAsync(user, file.FileName);
+
+                    if (!setAvatarResult.Succeeded)
+                    {
+                        StatusMessage = "Unexpected error when trying to set avatar.";
+                        return RedirectToPage();
+                    }
+                }
+
 
                 await _signInManager.RefreshSignInAsync(user);
                 StatusMessage = "Your profile has been updated";
                 return RedirectToPage();
             }
 
+            
+
             return Page();
         }
+
+        public async Task<IdentityResult> SetAvatarAsync(ApplicationUser user, string newAvatar)
+        {
+            user.AvatarString = newAvatar;
+            await _userManager.UpdateSecurityStampAsync(user);
+            return await _userManager.UpdateAsync(user);
+        }
+
 
     }
 }

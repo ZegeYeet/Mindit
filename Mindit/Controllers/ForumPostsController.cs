@@ -52,11 +52,6 @@ namespace Mindit.Controllers
                 postIndVM.indexAvatarStrings.Add(avatarString);
             }
 
-            foreach (var item in postIndVM.indexAvatarStrings)
-            {
-                Debug.WriteLine("string = " + item);
-            }
-
             return View("Index", postIndVM);
         }
 
