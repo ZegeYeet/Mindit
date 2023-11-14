@@ -18,7 +18,7 @@ namespace Mindit.Areas.Identity.Pages.Account.Manage
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IFileUploadService _fileUploadService;
 
-        public string avatarString;
+        public string AvatarString;
 
         public Avatar(
             UserManager<ApplicationUser> userManager,
@@ -69,11 +69,11 @@ namespace Mindit.Areas.Identity.Pages.Account.Manage
             var avatarString = user.AvatarString;
 
             Username = userName;
-
-            Input = new InputModel
+            AvatarString = avatarString;
+            /*Input = new InputModel
             {
                 AvatarString = avatarString
-            };
+            };*/
         }
 
         public async Task<IActionResult> OnGetAsync()
