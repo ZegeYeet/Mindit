@@ -14,6 +14,11 @@ namespace Mindit.FileUploadService
         {
             var filePath = Path.Combine(_webHostEnvironment.ContentRootPath, "wwwroot/Images/UserPictures", file.FileName);
 
+            if (File.Exists(filePath))
+            {
+                return null;
+            }
+
             using var FileStream = new FileStream(filePath, FileMode.Create);
             await file.CopyToAsync(FileStream);
 

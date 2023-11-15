@@ -98,7 +98,13 @@ namespace Mindit.Areas.Identity.Pages.Account.Manage
 
             if (file != null)
             {
-                await _fileUploadService.UploadFileAsync(file);
+                var uploadFileResult = await _fileUploadService.UploadFileAsync(file);
+
+                if (uploadFileResult == null) 
+                {
+                    StatusMessage = "File already exists.";
+                    return RedirectToPage();
+                }
 
                 var currentAvatarString = user.AvatarString;
                 if (file.FileName != currentAvatarString)
