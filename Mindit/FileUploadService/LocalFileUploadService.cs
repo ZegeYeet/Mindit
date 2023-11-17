@@ -10,19 +10,28 @@ namespace Mindit.FileUploadService
             this._webHostEnvironment = environment;
         }
 
-        public async Task<string> UploadFileAsync(IFormFile file)
+        public async Task<string> GenerateFileNameAsync(string filePath)
         {
-            var filePath = Path.Combine(_webHostEnvironment.ContentRootPath, "wwwroot/Images/UserPictures", file.FileName);
+            var newFileName = Guid.NewGuid().ToString() + ".png";
 
-            if (File.Exists(filePath))
+            while (File.Exists(Path.Combine(filePath, newFileName)))
             {
-                return null;
+                newFileName = Guid.NewGuid().ToString() + ".png";
             }
 
-            using var FileStream = new FileStream(filePath, FileMode.Create);
+            return newFileName;
+        }
+
+        public async Task<string> UploadFileAsync(IFormFile file)
+        {
+            var filePath = Path.Combine(_webHostEnvironment.ContentRootPath, "wwwroot/Images/UserPictures");
+
+            var fileName = await GenerateFileNameAsync(filePath);
+
+            using var FileStream = new FileStream(Path.Combine(filePath, fileName), FileMode.Create);
             await file.CopyToAsync(FileStream);
 
-            return filePath;
+            return fileName;
         }
     }
 }

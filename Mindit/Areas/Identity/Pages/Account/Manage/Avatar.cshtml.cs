@@ -107,9 +107,9 @@ namespace Mindit.Areas.Identity.Pages.Account.Manage
                 }
 
                 var currentAvatarString = user.AvatarString;
-                if (file.FileName != currentAvatarString)
+                if (uploadFileResult != currentAvatarString)
                 {
-                    var setAvatarResult = await SetAvatarAsync(user, file.FileName);
+                    var setAvatarResult = await SetAvatarAsync(user, uploadFileResult);
 
                     if (!setAvatarResult.Succeeded)
                     {
