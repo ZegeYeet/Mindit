@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -19,12 +20,12 @@ namespace Mindit.Models
         }
 
         // GET: MinditCategory
-        public async Task<IActionResult> Index()
+        /*public async Task<IActionResult> Index()
         {
               return _context.MinditCategoryModel != null ? 
                           View(await _context.MinditCategoryModel.ToListAsync()) :
                           Problem("Entity set 'ApplicationDbContext.MinditCategoryModel'  is null.");
-        }
+        }*/
 
         // GET: MinditCategory/Details/5
         public async Task<IActionResult> Details(string id)
@@ -45,6 +46,7 @@ namespace Mindit.Models
         }
 
         // GET: MinditCategory/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -55,6 +57,7 @@ namespace Mindit.Models
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("categoryName")] MinditCategoryModel minditCategoryModel)
         {
             if (ModelState.IsValid)
@@ -67,7 +70,7 @@ namespace Mindit.Models
         }
 
         // GET: MinditCategory/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        /*public async Task<IActionResult> Edit(string id)
         {
             if (id == null || _context.MinditCategoryModel == null)
             {
@@ -80,13 +83,14 @@ namespace Mindit.Models
                 return NotFound();
             }
             return View(minditCategoryModel);
-        }
+        }*/
 
         // POST: MinditCategory/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        /*[HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(string id, [Bind("categoryName")] MinditCategoryModel minditCategoryModel)
         {
             if (id != minditCategoryModel.categoryName)
@@ -115,10 +119,10 @@ namespace Mindit.Models
                 return RedirectToAction(nameof(Index));
             }
             return View(minditCategoryModel);
-        }
+        }*/
 
         // GET: MinditCategory/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        /*public async Task<IActionResult> Delete(string id)
         {
             if (id == null || _context.MinditCategoryModel == null)
             {
@@ -157,6 +161,6 @@ namespace Mindit.Models
         private bool MinditCategoryModelExists(string id)
         {
           return (_context.MinditCategoryModel?.Any(e => e.categoryName == id)).GetValueOrDefault();
-        }
+        }*/
     }
 }
