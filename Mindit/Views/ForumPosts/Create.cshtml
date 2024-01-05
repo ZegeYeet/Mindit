@@ -13,7 +13,7 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <span asp-for="className" class="control-label">Which Class</span>
+                <span asp-for="className" class="control-label">Which Category <a href="@Url.Action("Create", "MinditCategory")">Don't see the category you want?</a></span>
                 <select id="DropDownList1" asp-for="@Model.forumPost.mindyName" class="form-control">
                     <option value="">Please Select</option>
                     @foreach (var category in Model.categories)
