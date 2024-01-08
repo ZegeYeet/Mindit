@@ -10,6 +10,13 @@ namespace Mindit.Models
     {
         [Key]
         public string categoryName { get; set; }
+        public string categoryCreator { get; set; }
+        public string categoryDescription { get; set; }
+        [Required]
+        public bool categoryActive { get; set; }
+        [Required]
+        public DateTime creationDate { get; set; }
+
 
     }
 }

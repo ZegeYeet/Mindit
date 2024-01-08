@@ -305,6 +305,20 @@ namespace Mindit.Data.Migrations
                     b.Property<string>("categoryName")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<bool>("categoryActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("categoryCreator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("categoryDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("creationDate")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("categoryName");
 
                     b.ToTable("MinditCategoryModel");
