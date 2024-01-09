@@ -20,12 +20,12 @@ namespace Mindit.Models
         }
 
         // GET: MinditCategory
-        /*public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index()
         {
               return _context.MinditCategoryModel != null ? 
                           View(await _context.MinditCategoryModel.ToListAsync()) :
                           Problem("Entity set 'ApplicationDbContext.MinditCategoryModel'  is null.");
-        }*/
+        }
 
         // GET: MinditCategory/Details/5
         public async Task<IActionResult> Details(string id)
