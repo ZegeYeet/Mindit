@@ -17,6 +17,9 @@ namespace Mindit.Models
         [Required]
         public DateTime creationDate { get; set; }
 
-
+        public MinditCategoryModel()
+        {
+            this.creationDate = DateTime.UtcNow;
+        }
     }
 }
